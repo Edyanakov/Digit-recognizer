@@ -4,10 +4,7 @@ import tkinter as tk
 import win32gui
 from PIL import ImageGrab, Image
 import numpy as np
-import cv2 as cv
-import tensorflow as tf
 import matplotlib.pyplot as plt
-from skimage.color import rgb2gray
 
 model = load_model('mnist_recognizer.h5')
 
@@ -23,7 +20,7 @@ def predict_digit(img):
     # plt.imshow(img)
     # plt.show()
     # reshaping to support our model input and normalizing
-    img = img.reshape(1,-1)
+    img = img.reshape(1, 28, 28, 1)
     print('After reshaping:', img.shape)
     img = img / 255.0
     # predicting the class
